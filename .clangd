@@ -1,0 +1,16 @@
+CompileFlags:
+  CompilationDatabase: build
+  Remove:
+    - -forward-unknown-to-host-compiler
+    - --generate-code=arch=compute_89,code=[compute_89,sm_89]
+    - -Xcompiler=-Wall
+
+---
+If:
+  PathMatch: '.*\.cuh'
+CompileFlags:
+  Add:
+    - -xcuda
+    - --cuda-path=/opt/cuda
+    - --cuda-gpu-arch=sm_89
+    - -std=c++17
