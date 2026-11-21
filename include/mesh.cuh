@@ -8,8 +8,8 @@
 class Mesh
 {
 private:
-    GLuint m_vbo = 0;
-    GLuint m_vao = 0;
+    uint32_t m_vbo = 0;
+    uint32_t m_vao = 0;
     uint32_t m_vertex_count = 0;
 
 public:
@@ -37,7 +37,7 @@ public:
         glBindVertexArray(0);
     }
 
-    GLuint vbo() const { return m_vbo; }
+    uint32_t vbo() const { return m_vbo; }
     uint32_t vertex_count() const { return m_vertex_count; }
 
     void shutdown()

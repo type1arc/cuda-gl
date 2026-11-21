@@ -11,11 +11,11 @@
 class ShaderProgram
 {
 private:
-    GLuint m_program = 0;
+    uint32_t m_program = 0;
 
-    static GLuint compile(GLenum type, const std::string& src)
+    static uint32_t compile(GLenum type, const std::string& src)
     {
-        GLuint shader = glCreateShader(type);
+        uint32_t shader = glCreateShader(type);
         const char* csrc = src.c_str();
         glShaderSource(shader, 1, &csrc, nullptr);
         glCompileShader(shader);
@@ -28,8 +28,8 @@ public:
         std::string vsrc = load_shader_src(vert_path);
         std::string fsrc = load_shader_src(frag_path);
 
-        GLuint vs = compile(GL_VERTEX_SHADER, vsrc);
-        GLuint fs = compile(GL_FRAGMENT_SHADER, fsrc);
+        uint32_t vs = compile(GL_VERTEX_SHADER, vsrc);
+        uint32_t fs = compile(GL_FRAGMENT_SHADER, fsrc);
 
         m_program = glCreateProgram();
         glAttachShader(m_program, vs);
@@ -50,5 +50,5 @@ public:
     }
 
     void use() const { glUseProgram(m_program); }
-    GLuint id() const { return m_program; }
+    uint32_t id() const { return m_program; }
 };
